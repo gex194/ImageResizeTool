@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,7 @@ namespace ImageResizeTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        Bitmap bitmapImage = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,5 +55,37 @@ namespace ImageResizeTool
                 removeResolutionButton.IsEnabled = false;
             }
         }
+        private void OpenFileDialog(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.DefaultExt = ".png";
+            dialog.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.bmp)|*.jpg; *.jpeg; *.png; *.bmp";
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                filePath.Text = dialog.FileName;
+                try
+                {
+                    bitmapImage = new Bitmap(dialog.FileName, true);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.ToString());
+                }
+            }
+        }
+        private void Save_Images(object sender, RoutedEventArgs e)
+        {
+            var filePathLocal = System.IO.Path.GetDirectoryName(filePath.Text);
+            foreach (Resolution resolution in resolutionList.Items)
+            {
+                var resizedImage = new Bitmap(bitmapImage, new System.Drawing.Size(resolution.Width, resolution.Height));
+                resizedImage.Save($"{filePathLocal}/{resolution.Width}x{resolution.Height}.png", ImageFormat.Png);
+            }
+            
+        }
+        
     }
 }
