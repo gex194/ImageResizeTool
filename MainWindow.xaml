@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageResizeTool"
         mc:Ignorable="d"
-        Title="ImageResizeTool" Height="450" Width="800" MinWidth="600" MinHeight="400" MaxWidth="1000">
-    <Grid ShowGridLines="True" Height="Auto" Width="Auto">
+        Title="ImageResizeTool" Height="450" Width="800" MinWidth="800" MinHeight="500" MaxWidth="1000">
+    <Grid ShowGridLines="False" Height="Auto" Width="Auto">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
