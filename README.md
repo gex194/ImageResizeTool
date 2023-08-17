@@ -5,7 +5,7 @@ Just a simple tool to resize one image to different sizes with one click
 - Ability to create a list with custom resolutions
 - Resize an image using custom user-created resolutions and convert it to png format
 
-## Future plans:
+## Planned:
 - Add ability to choose not only a single file, but rather a folder
 - Add different format options
 - Option to preserve aspect ratio when adding new resolutions
